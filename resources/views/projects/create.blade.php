@@ -63,9 +63,7 @@
                 name="descrizione"
                 placeholder="Descrizione"
                 rows="3"
-                >
-                {{ old('descrizione') }} 
-                </textarea>
+                >{{ old('descrizione') }}</textarea>
                 <!-- genera errore sotto input -->
                 @error('descrizione')
                 <div class="invalid-feedback">

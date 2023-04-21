@@ -35,11 +35,11 @@
                     </td>
                     <td>
                         <div class="d-flex ">
-                            <a class="btn btn-sm btn-primary" href="{{ route('projects.edit',$project) }}">Edit</a>
+                            <a class="btn btn-sm btn-primary" href="{{ route('projects.edit',$project) }}">Modifica</a>
                             <form action="{{ route('projects.destroy',$project) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+                                <input type="submit" class="btn btn-danger btn-sm" value="Elimina">
                             </form>
                         </div>
                     </td>
