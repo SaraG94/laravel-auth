@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('descrizione')->nullable();
             $table->text('link');
             $table->string('slug');
+            $table->softDeletes();
             $table->timestamps();
         });
     }
