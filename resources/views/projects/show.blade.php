@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+@if(request()->session()->exists('message'))
+
+<div class="alert alert-primary" role="alert">
+    {{ request()->session()->pull('message') }}
+</div>
+@endif
 <div class="container py-5">
         <div class="d-flex align-items-center">
             <div class="me-auto">
@@ -9,6 +15,12 @@
 
             <div>
                 <a class="btn btn-sm btn-primary" href="{{ route('projects.edit',$project) }}">Modifica</a>
+                @if($project->trashed())
+                    <form action="{{ route('projects.restore',$project) }}" method="POST">
+                      @csrf
+                      <input class="btn btn-sm btn-success" type="submit" value="Ripristina">
+                    </form>
+                @endif
             </div>
 
         </div>

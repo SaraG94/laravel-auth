@@ -97,6 +97,17 @@ class ProjectController extends Controller
         return to_route('projects.show', $project);
     }
 
+    public function restore(Request $request, Project $project)
+    {
+
+        if ($project->trashed()) {
+            $project->restore();
+
+            $request->session()->flash('message', 'Il progetto è stato ripristinato.');
+        }
+
+        return back();
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -113,15 +124,4 @@ class ProjectController extends Controller
         return back();
     }
 
-    public function restore(Request $request, Project $project)
-    {
-
-        if ($project->trashed()) {
-            $project->restore();
-
-            $request->session()->flash('message', 'Il progetto è stato ripristinato.');
-        }
-
-        return back();
-    }
 }

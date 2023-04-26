@@ -3,11 +3,10 @@
 @section('content')
     @if(request()->session()->exists('message'))
 
-        <div class="alert alert-primary" role="alert">
-            {{ request()->session()->pull('message') }}
-        </div>
+    <div class="alert alert-primary" role="alert">
+        {{ request()->session()->pull('message') }}
+    </div>
     @endif
-
     <div class="container py-5">
         <div class="d-flex align-items-center">
             <h1 class="me-auto">I mie progetti</h1>
@@ -53,6 +52,12 @@
                                 @method('DELETE')
                                 <input type="submit" class="btn btn-danger btn-sm" value="Elimina">
                             </form>
+                            @if($project->trashed())
+                                <form action="{{ route('projects.restore',$project) }}" method="POST">
+                                @csrf
+                                <input class="btn btn-sm btn-success" type="submit" value="Ripristina">
+                            </form>
+                            @endif
                         </div>
                     </td>
                 </tr>
