@@ -6,8 +6,9 @@
     </div>
 
     <div class="container">
-        <form action="{{ route('projects.store') }}" method="POST">
+        <form action="{{ route('projects.update',$project) }}" method="POST">
         @csrf
+        @method('PUT')
             <div class="form-group">
                 <label for="titolo">Titolo</label>
                 <input type="text" class="form-control @error('titolo') is-invalid @enderror"

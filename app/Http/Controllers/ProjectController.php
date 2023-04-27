@@ -88,6 +88,8 @@ class ProjectController extends Controller
      */
     public function update(UpdateProjectRequest $request, Project $project)
     {
+        $data = $request->validated();//prendo i dati validati
+
         if ($data['titolo'] !== $project->titolo) {
             $data['slug'] = Str::slug($data['titolo']);
         }
